@@ -27,6 +27,15 @@ for (let index = 0; index < emojis.length; index+=1) {
     let box = document.createElement("div");
     box.className = "item";
     box.innerHTML = shuffleEmojis[index];
+    box.onclick = handleClick;
     document.querySelector(".game").appendChild(box);
-    
+}
+
+function handleClick() {
+    if(openCards.length < 2) {
+        this.classList.add("boxOpen");
+        openCards.push(this);
+    } else if(openCards.length === 2) {
+        setTimeout(checkMatch, 500);
+    }
 }
